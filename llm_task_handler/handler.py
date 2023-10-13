@@ -1,9 +1,13 @@
 from typing import Any
+from typing import Coroutine
 from typing import Optional
 
 from abc import ABC
 from abc import abstractmethod
 from dataclasses import dataclass
+
+
+ProgressMessageFunc = Coroutine[Any, Any, str]
 
 
 @dataclass
@@ -25,7 +29,7 @@ class TaskHandler(ABC):
         """Type of task"""
 
     @abstractmethod
-    async def transition(self, cur_state: TaskState) -> TaskState:
+    async def transition(self, cur_state: TaskState, progress_reply_func: Optional[ProgressMessageFunc] = None) -> TaskState:
         """Transition to the next state of the task. May optionally perform an action."""
 
 
