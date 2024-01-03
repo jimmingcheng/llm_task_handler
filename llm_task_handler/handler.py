@@ -29,7 +29,7 @@ class TaskHandler(ABC):
         """Type of task"""
 
     @abstractmethod
-    async def transition(self, cur_state: TaskState, progress_reply_func: Optional[ProgressMessageFunc] = None) -> TaskState:
+    async def transition(self, cur_state: TaskState, progress_message_func: Optional[ProgressMessageFunc] = None) -> TaskState:
         """Transition to the next state of the task. May optionally perform an action."""
 
 
